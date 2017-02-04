@@ -1,10 +1,14 @@
 <resources>
-    <color name="bg">#1E88E5</color>
+    <color name="bg">#42A5F5</color>
+    <color name="_600">#1E88E5</color>
+    <color name="_50">#E3F2FD</color>
     <color name="white">#FFFFFF</color>
 
     <string name="app_name">Internet of Pillows</string>
-    <string name="welcome">Welcome</string>
+    <string name="welcome">Internet of Pillows</string>
     <string name="signIn">Sign In</string>
     <string name="username">Username or Email</string>
     <string name="password">Password</string>
+    <string name="forgot">Lost your password?</string>
+    <string name="Register">Create Account</string>
 </resources>

@@ -2,53 +2,91 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.ajkndroid.com/tools"
-    android:background="@color/bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     android:orientation="vertical"
     android:paddingLeft="16dp"
     android:paddingRight="16dp">
 
     <TextView
-        android:id="@+id/edit_message"
+        android:id="@+id/welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/welcome"
-        android:paddingTop="16dp"
-        android:textSize="32sp" />
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:paddingTop="100dp"
+        android:text="@string/welcome"
+        android:textColor="#ffffff"
+        android:textSize="42sp" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.ajkndroid.com/tools"
+        android:paddingTop="150dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
+        android:orientation="vertical"
         android:paddingRight="0dp">
 
         <EditText
-            android:fontFamily="sans-serif-light"
-            style="@style/FullWidthEditText"
             android:id="@+id/editText2"
+            style="@style/FullWidthEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
             android:hint="@string/username" />
 
         <EditText
-            android:fontFamily="sans-serif-light"
-            style="@style/FullWidthEditText"
             android:id="@+id/editText1"
+            style="@style/FullWidthEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:hint="@string/password" />
+            android:fontFamily="sans-serif-light"
+            android:hint="@string/password"
+            android:paddingBottom="10dp" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:fontFamily="sans-serif-light"
+            android:background="@color/_600"
             android:onClick="login"
+            android:textColor="#ffffff"
             android:text="@string/signIn" />
 
+        <TextView
+            android:id="@+id/forgot"
+            android:paddingTop="2sp"
+            android:paddingBottom="2sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="@string/forgot"
+            android:textColor="#ffffff"
+            android:textStyle="italic"
+            android:textSize="14sp" />
+
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/register"
+            android:layout_alignParentBottom="true"
+            android:paddingTop="2sp"
+            android:paddingBottom="50sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="@string/Register"
+            android:textColor="#ffffff"
+            android:textStyle="italic"
+            android:textSize="14sp" />
+    </RelativeLayout>
 
 </LinearLayout>
