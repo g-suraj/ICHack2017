@@ -11,4 +11,7 @@
     <string name="password">Password</string>
     <string name="forgot">Lost your password?</string>
     <string name="Register">Create Account</string>
+
+    <string name="pair">Attempting to connect to the pillow...</string>
+
 </resources>

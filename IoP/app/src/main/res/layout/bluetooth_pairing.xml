@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.ajkndroid.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingTop="56dp"
+    android:gravity="center_vertical"
+    android:paddingRight="16dp">
+
+    <ImageButton
+        android:layout_width="150sp"
+        android:layout_height="240sp"
+        android:layout_gravity="center"
+        android:paddingTop="90sp"
+        android:background="@drawable/bt"
+        android:paddingBottom="50sp"
+        android:id="@+id/imageButton" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingTop="70sp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/pairBluetooth"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif-light"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:text="@string/pair"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+</LinearLayout>

@@ -16,7 +16,7 @@ public class LoginScreen extends AppCompatActivity {
     /** Called when the user clicks the Sign In button */
     public void sendMessage(View view) {
         // Do something in response to button
-        Intent myIntent = new Intent(LoginScreen.this, MainActivity.class);
+        Intent myIntent = new Intent(LoginScreen.this, BluetoothPairing.class);
         LoginScreen.this.startActivity(myIntent);
     }
 }
