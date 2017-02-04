@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">IoP</string>
+    <color name="bg">#1E88E5</color>
+    <color name="white">#FFFFFF</color>
+
+    <string name="app_name">Internet of Pillows</string>
+    <string name="welcome">Welcome</string>
+    <string name="signIn">Sign In</string>
+    <string name="username">Username or Email</string>
+    <string name="password">Password</string>
 </resources>
