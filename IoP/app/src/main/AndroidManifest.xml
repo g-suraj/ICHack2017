@@ -22,7 +22,8 @@
         <activity android:name=".BluetoothPairing" />
         <activity android:name=".ConnectedScreen" />
         <activity android:name=".AlarmActivity" />
-        <activity android:name=".WatchActivity"></activity>
+        <activity android:name=".WatchActivity" />
+        <activity android:name=".HeatMap"></activity>
     </application>
 
 </manifest>

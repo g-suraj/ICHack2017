@@ -1,37 +1,17 @@
-## Welcome to GitHub Pages
+## IC Hack 2017
 
-You can use the [editor on GitHub](https://github.com/contactgsuraj/ICHack2017/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+A Smart pillow for the future generations. A prototype build in approximately 24 hours for a hackathon
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Details
 
-### Markdown
+A hand built pressure sensor is hooked up to a raspberry pi. All of these have been house in a hand craft wood case! The Raspberry pi's GPIO pins are connected to these handmade pressure sensors. The raspberry pi runs a Bluetooth RFComm server. The android application connects to this socket. There are some integrations with the android app and is highly extensible. As for now the android application has a live feed of the pillow and a heat map. A failed go at alarm clock integration also happened in the process.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+For more details see [GitHub](https://github.com/contactgsuraj/ICHack2017).
 
-```markdown
-Syntax highlighted code block
+### Team members
 
-# Header 1
-## Header 2
-### Header 3
+This was a group project done by: G Suraj, Riku Murai and Will Woodacre.
 
-- Bulleted
-- List
+### Acknowledgements
+Thanks to the organisers at Imperial College London.
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/contactgsuraj/ICHack2017/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.

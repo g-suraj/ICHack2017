@@ -59,9 +59,9 @@
         android:layout_margin="10sp"
         android:fontFamily="sans-serif-light"
         android:background="@color/_600"
-        android:onClick="sendMessage"
+        android:onClick="heatMap"
         android:textColor="#ffffff"
-        android:text="ETC" />
+        android:text="HEAT MAP" />
     <Button
         android:id="@+id/button4"
         android:layout_width="match_parent"

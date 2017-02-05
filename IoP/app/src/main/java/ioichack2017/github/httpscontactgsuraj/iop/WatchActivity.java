@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class WatchActivity extends AppCompatActivity {
     //private Timer timer;
@@ -107,13 +105,6 @@ public class WatchActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        // This timer task will be executed every 1 sec.
-        // Create the Handler
-
-        // Define the code block to be executed
-
-        // Start the Runnable immediately
         handler.post(runnable);
     }
 }

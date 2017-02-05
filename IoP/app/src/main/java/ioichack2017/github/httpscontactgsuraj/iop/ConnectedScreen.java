@@ -47,4 +47,8 @@ public class ConnectedScreen extends AppCompatActivity {
         ConnectedScreen.this.startActivity(myIntent);
     }
 
+    public void heatMap(View v) {
+        Intent myIntent = new Intent(ConnectedScreen.this, HeatMap.class);
+        ConnectedScreen.this.startActivity(myIntent);
+    }
 }
