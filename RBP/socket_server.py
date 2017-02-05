@@ -17,22 +17,30 @@ s.bind((macAddr, port))
 s.listen(backlog)
 
 def exitRoutine(client):
-  print("Closing socket")
+  print("Closing socket!!!!!!")
   client.close()
   s.close()
 
+def checkCutOff(num):
+  if (num > 0.8):
+    return 1
+  else:
+    return 0
+
 def isSleeping(sampleNum, data):
-  cutOff = 0.8
   for d in data:
-    if (d / sampleNum > cutOff):
+    if (checkCutOff(d / sampleNum)):
       return True
   return False
 
 try:
   client, address = s.accept()
   client.setblocking(0)
-  currentData = [0] * 8
-  numSample = 0
+  currentData = [[], [], [], [], [], [], [], []]
+  numSample = 1000
+  for num in range(numSample):
+    for i, pin in enumerate(chan_list):
+      currentData[i].append(GPIO.input(pin))
   while True:
     try:
       # Phone requested
@@ -45,22 +53,23 @@ try:
           client.sendall(toSend)
           print(toSend)
         else:
-          toSend = `numSample`
+          toSend =""
+          first = True
           for i in currentData:
-            toSend += " " + `i`
+            if first:
+              toSend += `checkCutOff(sum(i) / numSample)`
+            else:
+              toSend += " " + `checkCutOff(sum(i) / numSample)`
           client.sendall(toSend)
-          currentData = [0] * 8
-          numSample = 0
           print(toSend)
           print("done")
       else:
         exitRoutine(client)
     except:
       # no request from phone
-      # print("No data!!!")
+      print("No data!!!")
       for i, pin in enumerate(chan_list):
-        currentData[i] += GPIO.input(pin)
-      numSample += 1
+        currentData[i].append(GPIO.input(pin))
+        currentData[i].pop(0)
 except:
   print("Closing socket")
-  s.close()
