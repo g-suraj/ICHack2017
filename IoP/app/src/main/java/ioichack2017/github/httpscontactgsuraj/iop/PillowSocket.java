@@ -10,9 +10,17 @@ import java.io.IOException;
 
 public class PillowSocket {
     private BluetoothSocket bluetoothSocket;
+    private static PillowSocket instance = null;
 
-    public PillowSocket() {
+    protected PillowSocket() {
         bluetoothSocket = null;
+    }
+
+    public static PillowSocket getInstance() {
+        if(instance == null) {
+            instance = new PillowSocket();
+        }
+        return instance;
     }
 
     public void setBluetoothSocket(BluetoothSocket bluetoothSocket) {
