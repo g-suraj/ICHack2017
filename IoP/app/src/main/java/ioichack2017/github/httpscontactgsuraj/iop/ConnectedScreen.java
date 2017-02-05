@@ -3,6 +3,7 @@ package ioichack2017.github.httpscontactgsuraj.iop;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
 
@@ -33,6 +34,12 @@ public class ConnectedScreen extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent myIntent = new Intent(ConnectedScreen.this, LoginScreen.class);
+        ConnectedScreen.this.startActivity(myIntent);
+    }
+
+
+    public void sendMessage(View v) {
+        Intent myIntent = new Intent(ConnectedScreen.this, AlarmActivity.class);
         ConnectedScreen.this.startActivity(myIntent);
     }
 

@@ -1,18 +1,12 @@
 package ioichack2017.github.httpscontactgsuraj.iop;
 
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 import static ioichack2017.github.httpscontactgsuraj.iop.BluetoothPairing.mBluetoothAdapter;
 
@@ -23,9 +17,9 @@ class ConnectThread extends Thread {
     private final BluetoothDevice mmDevice;
     private BluetoothPairing bp;
     //private static final UUID MY_UUID = UUID.fromString("636F3F8F-6491-4BEE-95F7-D8CC64A863B5");
-    private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    //private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     //636F3F8F-6491-4BEE-95F7-D8CC64A863B5
-    private Handler mHandler; // handler that gets info from Bluetooth service
+    //private Handler mHandler; // handler that gets info from Bluetooth service
 
     public ConnectThread(BluetoothDevice device, BluetoothPairing clasc_c) {
         // Use a temporary object that is later assigned to mmSocket
@@ -82,14 +76,6 @@ class ConnectThread extends Thread {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    private interface MessageConstants {
-        public static final int MESSAGE_READ = 0;
-        public static final int MESSAGE_WRITE = 1;
-        public static final int MESSAGE_TOAST = 2;
-
-        // ... (Add other message types here as needed.)
     }
 
     private void manageMyConnectedSocket(BluetoothSocket mmSocket) throws IOException, InterruptedException {
