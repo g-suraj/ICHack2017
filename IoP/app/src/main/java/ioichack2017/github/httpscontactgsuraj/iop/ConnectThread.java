@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 import static ioichack2017.github.httpscontactgsuraj.iop.BluetoothPairing.mBluetoothAdapter;
 
 class ConnectThread extends Thread {
-    private boolean BYPASS = true;
+    private boolean BYPASS = false;
     private String TAG = "CONNECT THREAD";
     private final BluetoothSocket mmSocket;
     private final BluetoothDevice mmDevice;
