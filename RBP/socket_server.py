@@ -16,33 +16,18 @@ s = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM
 s.bind((macAddr, port))
 s.listen(backlog)
 
-# try:
-#   client, address = s.accept()
-#   while 1:
-#     recieved = client.recv(size)
-#     if recieved:
-#       print(recieved)
-#       data = "{"
-#       first = True
-#       for i in chan_list:
-#         if not first:
-#           data += ","
-#         data += "\"" + `pin_map[i]` + "\" : " 
-#         data += `GPIO.input(i)`
-#         first = False
-#       data += "}"
-#       print(data)
-#       client.sendall(data)
-# except:
-#   print("Closing socket")
-#   client.close()
-#   s.close()
-
 def exitRoutine(client):
   print("Closing socket")
   client.close()
   s.close()
-  
+
+def isSleeping(sampleNum, data):
+  cutOff = 0.8
+  for d in data:
+    if (d / sampleNum > cutOff):
+      return True
+  return False
+
 try:
   client, address = s.accept()
   client.setblocking(0)
@@ -54,14 +39,20 @@ try:
       recieved = client.recv(size)
       if recieved:
         print(recieved)
-        toSend = `numSample`
-        for i in currentData:
-          toSend += " " + `i`
-        client.sendall(toSend)
-        currentData = [0] * 8
-        numSample = 0
-        print(toSend)
-        print("done")
+        if recieved == "IS_SLEEPING":
+          print("Am I sleeping?")
+          toSend = isSleeping(numSample, currentData)
+          client.sendall(toSend)
+          print(toSend)
+        else:
+          toSend = `numSample`
+          for i in currentData:
+            toSend += " " + `i`
+          client.sendall(toSend)
+          currentData = [0] * 8
+          numSample = 0
+          print(toSend)
+          print("done")
       else:
         exitRoutine(client)
     except:
