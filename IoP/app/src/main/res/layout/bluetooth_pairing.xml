@@ -7,7 +7,7 @@
     android:background="@color/bg"
     android:orientation="vertical"
     android:paddingLeft="16dp"
-    android:paddingTop="56dp"
+    android:paddingTop="0dp"
     android:gravity="center_vertical"
     android:paddingRight="16dp">
 
@@ -15,9 +15,9 @@
         android:layout_width="150sp"
         android:layout_height="240sp"
         android:layout_gravity="center"
-        android:paddingTop="90sp"
+        android:paddingTop="80sp"
         android:background="@drawable/bt"
-        android:paddingBottom="50sp"
+        android:paddingBottom="30sp"
         android:id="@+id/imageButton" />
 
     <LinearLayout

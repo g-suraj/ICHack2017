@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -119,4 +120,5 @@ public class BluetoothPairing extends AppCompatActivity {
         Intent myIntent = new Intent(BluetoothPairing.this, ConnectedScreen.class);
         BluetoothPairing.this.startActivity(myIntent);
     }
+
 }

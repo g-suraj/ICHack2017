@@ -15,5 +15,6 @@
     <string name="pair">Attempting to connect to the pillow...</string>
 
     <string name="connected">Connected.</string>
+    <string name="inquire">What would you like to do?</string>
 
 </resources>

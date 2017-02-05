@@ -3,6 +3,7 @@ package ioichack2017.github.httpscontactgsuraj.iop;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 public class LoginScreen extends AppCompatActivity {
@@ -19,4 +20,5 @@ public class LoginScreen extends AppCompatActivity {
         Intent myIntent = new Intent(LoginScreen.this, BluetoothPairing.class);
         LoginScreen.this.startActivity(myIntent);
     }
+
 }

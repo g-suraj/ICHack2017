@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 import static ioichack2017.github.httpscontactgsuraj.iop.BluetoothPairing.mBluetoothAdapter;
 
 class ConnectThread extends Thread {
+    private boolean BYPASS = true;
     private String TAG = "CONNECT THREAD";
     private final BluetoothSocket mmSocket;
     private final BluetoothDevice mmDevice;
@@ -51,6 +52,10 @@ class ConnectThread extends Thread {
     public void run() {
         // Cancel discovery because it otherwise slows down the connection.
         mBluetoothAdapter.cancelDiscovery();
+        if (BYPASS) {
+            bp.connectionSuccess();
+            return;
+        }
 
         try {
             // Connect to the remote device through the socket. This call blocks
@@ -93,16 +98,16 @@ class ConnectThread extends Thread {
         // Read message
         // Record it and store it.
         //while (true) {
-            Thread.sleep(500);
-            byte[] b = {72, 69, 76, 76, 79};
-            mmSocket.getOutputStream().write(b);
+        Thread.sleep(500);
+        byte[] b = {72, 69, 76, 76, 79};
+        mmSocket.getOutputStream().write(b);
         //}
-            //System.out.println("OUTPUT");
-            //byte[] mmBuffer = new byte[1024];
-            //int num = mmSocket.getInputStream().read(mmBuffer);
-            //System.out.println(num);
-            //String str1 = new String(mmBuffer);
-            //System.out.println("str1 >> " + str1);
+        //System.out.println("OUTPUT");
+        //byte[] mmBuffer = new byte[1024];
+        //int num = mmSocket.getInputStream().read(mmBuffer);
+        //System.out.println(num);
+        //String str1 = new String(mmBuffer);
+        //System.out.println("str1 >> " + str1);
 
     }
 
@@ -114,4 +119,5 @@ class ConnectThread extends Thread {
             Log.e(TAG, "Could not close the client socket", e);
         }
     }
+
 }
