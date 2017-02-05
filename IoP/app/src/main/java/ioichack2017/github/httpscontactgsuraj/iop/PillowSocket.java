@@ -35,9 +35,7 @@ public class PillowSocket {
         byte[] bMessage = message.getBytes();
         bluetoothSocket.getOutputStream().write(bMessage);
         byte[] buff = new byte[1024];
-        System.out.println("Got here!!!");
         int len = bluetoothSocket.getInputStream().read(buff);
-        System.out.println("Got here?????");
         byte[] res = new byte[len];
         System.arraycopy(buff, 0, res, 0, len);
         return res;
