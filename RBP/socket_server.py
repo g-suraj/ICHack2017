@@ -29,7 +29,7 @@ def checkCutOff(num):
 
 def isSleeping(sampleNum, data):
   for d in data:
-    if (checkCutOff(d / sampleNum)):
+    if ((sum(d) / sampleNum) > 0.8):
       return True
   return False
 
@@ -50,8 +50,12 @@ try:
         if recieved == "IS_SLEEPING":
           print("Am I sleeping?")
           toSend = isSleeping(numSample, currentData)
-          client.sendall(toSend)
           print(toSend)
+          if (toSend):
+            toSend = '1'
+          else:
+            toSend = '0'
+          client.sendall(toSend)
         else:
           toSend =""
           first = True
@@ -67,7 +71,6 @@ try:
         exitRoutine(client)
     except:
       # no request from phone
-      print("No data!!!")
       for i, pin in enumerate(chan_list):
         currentData[i].append(GPIO.input(pin))
         currentData[i].pop(0)
