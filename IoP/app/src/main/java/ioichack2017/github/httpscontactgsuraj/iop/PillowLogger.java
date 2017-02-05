@@ -5,22 +5,25 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
-import android.os.SystemClock;
+import android.os.Handler;
+import java.lang.Runnable.*;
 
 /**
  * Created by root on 05/02/17.
  */
 
-public class PillowLogger extends Thread {
+public class PillowLogger implements Runnable {
     private PillowStateDbHelper pillowStateDbHelper;
+    private Handler handler;
 
     public PillowLogger(Context ctx) {
         this.pillowStateDbHelper = new PillowStateDbHelper(ctx);
+        this.handler = new Handler();
     }
 
     public void run() {
         while(true) {
-            SystemClock.sleep(10000);
+            handler.postDelayed(this, 1000);
             try {
                 PillowState state = PillowSocket.getInstance().getPillowState();
                 log(state);
@@ -41,6 +44,7 @@ public class PillowLogger extends Thread {
         public static final String D2 = "D2";
         public static final String D3 = "D3";
         public static final String D4 = "D4";
+        public static final String TIME_STAMP = "timeStamp";
     }
 
     private static final String SQL_CREATE_ENTRIES =
@@ -53,7 +57,8 @@ public class PillowLogger extends Thread {
                     PillowStateEntry.D1 + " TEXT," +
                     PillowStateEntry.D2 + " TEXT," +
                     PillowStateEntry.D3 + " TEXT," +
-                    PillowStateEntry.D4 + " TEXT)";
+                    PillowStateEntry.D4 + " TEXT," +
+                    PillowStateEntry.TIME_STAMP + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + PillowStateEntry.TABLE_NAME;
@@ -96,8 +101,10 @@ public class PillowLogger extends Thread {
         values.put(PillowStateEntry.D2, state[5]);
         values.put(PillowStateEntry.D3, state[6]);
         values.put(PillowStateEntry.D4, state[7]);
+        values.put(PillowStateEntry.TIME_STAMP, " time('now') ");
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId = db.insert(PillowStateEntry.TABLE_NAME, null, values);
     }
+
 }
