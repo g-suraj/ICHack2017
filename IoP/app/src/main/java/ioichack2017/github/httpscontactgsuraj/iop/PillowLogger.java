@@ -5,22 +5,25 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
-import android.os.SystemClock;
+import android.os.Handler;
+import java.lang.Runnable.*;
 
 /**
  * Created by root on 05/02/17.
  */
 
-public class PillowLogger extends Thread {
+public class PillowLogger implements Runnable {
     private PillowStateDbHelper pillowStateDbHelper;
+    private Handler handler;
 
     public PillowLogger(Context ctx) {
         this.pillowStateDbHelper = new PillowStateDbHelper(ctx);
+        this.handler = new Handler();
     }
 
     public void run() {
         while(true) {
-            SystemClock.sleep(10000);
+            handler.postDelayed(this, 1000);
             try {
                 PillowState state = PillowSocket.getInstance().getPillowState();
                 log(state);
