@@ -10,7 +10,8 @@ import java.io.IOException;
 
 public class HeatMap extends AppCompatActivity {
     private Handler handler = new Handler();
-    private int denum = 0;
+    private int flipper = 0;
+    private int denum = 1;
     private int[] base = new int[8];
     private int redHigh = 255;
     private Runnable runnable = new Runnable() {
@@ -24,13 +25,18 @@ public class HeatMap extends AppCompatActivity {
                 boolean arr[] = pstate.getState();
 
                 TextView t = (TextView) findViewById(R.id.hu1);
-                int g = ((1-(denum/base[0])) * 255);
-                t.setBackgroundColor(Color.rgb(redHigh, g , g));
+                // Starts with (1 - (base[0]/denum)
                 if (arr[0]) {
                     base[0]++;
+                }  else {
+                    base[0]--;
                 }
-                if (denum %2 == 0 && denum < base[0])
-                denum++;
+                int g = 255 - base[0];
+                if (g < 0)
+                    g = 0;
+                if (g > 255)
+                    g = 255;
+                t.setBackgroundColor(Color.rgb(redHigh, g, g));
 
                 //if (arr[1]) {
                 //    base[1]++;
@@ -84,6 +90,7 @@ public class HeatMap extends AppCompatActivity {
             handler.postDelayed(runnable, 100);
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,8 +101,8 @@ public class HeatMap extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        for (int i = 0; i < base.length ; i++) {
-           base[i] = 1;
+        for (int i = 0; i < base.length; i++) {
+            base[i] = 0;
         }
         handler.post(runnable);
     }
