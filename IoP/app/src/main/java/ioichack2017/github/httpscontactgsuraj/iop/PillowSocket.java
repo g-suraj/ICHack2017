@@ -50,7 +50,7 @@ public class PillowSocket {
         byte[] pillowData = getDataFromSocket("HELLO");
         boolean[] state = new boolean[8];
         for(int i = 0; i < 8; i++) {
-            state[i] = pillowData[i] != 0;
+            state[i] = pillowData[i] != (int) '0';
         }
         return new PillowState(state);
     }
