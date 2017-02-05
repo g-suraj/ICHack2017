@@ -37,6 +37,10 @@ public class ConnectedScreen extends AppCompatActivity {
         ConnectedScreen.this.startActivity(myIntent);
     }
 
+    public void watchMe(View v) {
+        Intent myIntent = new Intent(ConnectedScreen.this, WatchActivity.class);
+        ConnectedScreen.this.startActivity(myIntent);
+    }
 
     public void sendMessage(View v) {
         Intent myIntent = new Intent(ConnectedScreen.this, AlarmActivity.class);

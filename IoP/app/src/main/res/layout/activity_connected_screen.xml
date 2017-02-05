@@ -38,7 +38,7 @@
         android:layout_margin="10sp"
         android:fontFamily="sans-serif-light"
         android:background="@color/_600"
-        android:onClick="sendMessage"
+        android:onClick="watchMe"
         android:textColor="#ffffff"
         android:text="Watch me" />
 
