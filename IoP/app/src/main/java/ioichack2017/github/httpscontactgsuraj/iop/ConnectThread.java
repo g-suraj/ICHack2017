@@ -67,15 +67,9 @@ class ConnectThread extends Thread {
             return;
         }
 
-        // The connection attempt succeeded. Perform work associated with
-        // the connection in a separate thread.
-        try {
-            manageMyConnectedSocket(mmSocket);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // The connection attempt succeeded. Give the successful socket to the pillow socket
+        // monitor.
+        PillowSocket.getInstance().setBluetoothSocket(mmSocket);
     }
 
     private void manageMyConnectedSocket(BluetoothSocket mmSocket) throws IOException, InterruptedException {
