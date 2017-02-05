@@ -23,7 +23,7 @@ public class ConnectedScreen extends AppCompatActivity {
         AlphaAnimation fadeIn = new AlphaAnimation(0.0f, 1.0f);
 
         textView.startAnimation(fadeOut);
-        fadeOut.setDuration(2400);
+        fadeOut.setDuration(1400);
         fadeOut.setFillAfter(true);
         textView2.startAnimation(fadeIn);
         fadeIn.setDuration(2000);
