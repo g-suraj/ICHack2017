@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
 
     <application
         android:allowBackup="true"
@@ -19,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".BluetoothPairing" />
-        <activity android:name=".ConnectedScreen"></activity>
+        <activity android:name=".ConnectedScreen" />
+        <activity android:name=".AlarmActivity"></activity>
     </application>
 
 </manifest>

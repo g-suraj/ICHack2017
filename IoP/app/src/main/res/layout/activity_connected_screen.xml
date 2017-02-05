@@ -1,43 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.ajkndroid.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:orientation="vertical"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp">
+    android:paddingRight="16dp">
 
     <TextView
         android:id="@+id/Connection"
-        android:paddingTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
         android:gravity="center_horizontal"
+        android:paddingTop="20dp"
         android:text="@string/connected"
         android:textColor="#ffffff"
         android:textSize="28sp" />
 
     <TextView
         android:id="@+id/inquire"
-        android:paddingTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
         android:gravity="center_horizontal"
+        android:paddingBottom="200sp"
+        android:paddingTop="20dp"
         android:text="@string/inquire"
         android:textColor="#ffffff"
         android:textSize="28sp" />
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:layout_height="wrap_content" />
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:fontFamily="sans-serif-light"
+        android:background="@color/_600"
+        android:onClick="sendMessage"
+        android:textColor="#ffffff"
+        android:text="Watch me" />
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:layout_height="wrap_content" />
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:fontFamily="sans-serif-light"
+        android:background="@color/_600"
+        android:onClick="sendMessage"
+        android:textColor="#ffffff"
+        android:text="Alarm" />
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:fontFamily="sans-serif-light"
+        android:background="@color/_600"
+        android:onClick="sendMessage"
+        android:textColor="#ffffff"
+        android:text="ETC" />
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:fontFamily="sans-serif-light"
+        android:background="@color/_600"
+        android:onClick="ETC"
+        android:textColor="#ffffff"
+        android:text="Watch me" />
 </LinearLayout>
 
 
