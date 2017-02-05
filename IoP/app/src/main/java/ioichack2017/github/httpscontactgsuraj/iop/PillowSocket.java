@@ -23,7 +23,7 @@ public class PillowSocket {
         return instance;
     }
 
-    public void setBluetoothSocket(BluetoothSocket bluetoothSocket) {
+    public synchronized void setBluetoothSocket(BluetoothSocket bluetoothSocket) {
         this.bluetoothSocket = bluetoothSocket;
         notifyAll();
     }
