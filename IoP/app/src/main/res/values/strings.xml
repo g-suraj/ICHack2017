@@ -14,4 +14,6 @@
 
     <string name="pair">Attempting to connect to the pillow...</string>
 
+    <string name="connected">Connected.</string>
+
 </resources>

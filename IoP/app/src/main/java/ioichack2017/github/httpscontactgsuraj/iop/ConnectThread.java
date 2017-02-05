@@ -3,12 +3,16 @@ package ioichack2017.github.httpscontactgsuraj.iop;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import static ioichack2017.github.httpscontactgsuraj.iop.BluetoothPairing.mBluetoothAdapter;
 
@@ -16,20 +20,19 @@ class ConnectThread extends Thread {
     private String TAG = "CONNECT THREAD";
     private final BluetoothSocket mmSocket;
     private final BluetoothDevice mmDevice;
+    private BluetoothPairing bp;
     //private static final UUID MY_UUID = UUID.fromString("636F3F8F-6491-4BEE-95F7-D8CC64A863B5");
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     //636F3F8F-6491-4BEE-95F7-D8CC64A863B5
+    private Handler mHandler; // handler that gets info from Bluetooth service
 
-    public ConnectThread(BluetoothDevice device) {
+    public ConnectThread(BluetoothDevice device, BluetoothPairing clasc_c) {
         // Use a temporary object that is later assigned to mmSocket
         // because mmSocket is final.
+        bp = clasc_c;
         BluetoothSocket tmp = null;
         mmDevice = device;
 
-        //try {
-        // Get a BluetoothSocket to connect with the given BluetoothDevice.
-        // MY_UUID is the app's UUID string, also used in the server code.
-        //tmp = device.createRfcommSocketToServiceRecord(MY_UUID);
         try {
             Method m = mmDevice.getClass().getMethod("createRfcommSocket", new Class[]{int.class});
             try {
@@ -42,9 +45,6 @@ class ConnectThread extends Thread {
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
-        //} catch (IOException e) {
-        //    Log.e(TAG, "Socket's create() method failed", e);
-        //}
         mmSocket = tmp;
     }
 
@@ -56,11 +56,10 @@ class ConnectThread extends Thread {
             // Connect to the remote device through the socket. This call blocks
             // until it succeeds or throws an exception.
             mmSocket.connect();
-            System.out.println("DEBUGGGGGG: Connection");
+            bp.connectionSuccess();
 
         } catch (IOException connectException) {
             // Unable to connect; close the socket and return.
-            System.out.println(connectException);
             try {
                 mmSocket.close();
             } catch (IOException closeException) {
@@ -71,7 +70,40 @@ class ConnectThread extends Thread {
 
         // The connection attempt succeeded. Perform work associated with
         // the connection in a separate thread.
-        //manageMyConnectedSocket(mmSocket);
+        try {
+            manageMyConnectedSocket(mmSocket);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private interface MessageConstants {
+        public static final int MESSAGE_READ = 0;
+        public static final int MESSAGE_WRITE = 1;
+        public static final int MESSAGE_TOAST = 2;
+
+        // ... (Add other message types here as needed.)
+    }
+
+    private void manageMyConnectedSocket(BluetoothSocket mmSocket) throws IOException, InterruptedException {
+        // wait 500ms
+        // Poll HELLO
+        // Read message
+        // Record it and store it.
+        //while (true) {
+            Thread.sleep(500);
+            byte[] b = {72, 69, 76, 76, 79};
+            mmSocket.getOutputStream().write(b);
+        //}
+            //System.out.println("OUTPUT");
+            //byte[] mmBuffer = new byte[1024];
+            //int num = mmSocket.getInputStream().read(mmBuffer);
+            //System.out.println(num);
+            //String str1 = new String(mmBuffer);
+            //System.out.println("str1 >> " + str1);
+
     }
 
     // Closes the client socket and causes the thread to finish.
