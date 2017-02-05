@@ -73,15 +73,9 @@ class ConnectThread extends Thread {
             return;
         }
 
-        // The connection attempt succeeded. Perform work associated with
-        // the connection in a separate thread.
-        try {
-            manageMyConnectedSocket(mmSocket);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // The connection attempt succeeded. Give the successful socket to the pillow socket
+        // monitor.
+        PillowSocket.getInstance().setBluetoothSocket(mmSocket);
     }
 
     private interface MessageConstants {
@@ -90,25 +84,6 @@ class ConnectThread extends Thread {
         public static final int MESSAGE_TOAST = 2;
 
         // ... (Add other message types here as needed.)
-    }
-
-    private void manageMyConnectedSocket(BluetoothSocket mmSocket) throws IOException, InterruptedException {
-        // wait 500ms
-        // Poll HELLO
-        // Read message
-        // Record it and store it.
-        //while (true) {
-        Thread.sleep(500);
-        byte[] b = {72, 69, 76, 76, 79};
-        mmSocket.getOutputStream().write(b);
-        //}
-        //System.out.println("OUTPUT");
-        //byte[] mmBuffer = new byte[1024];
-        //int num = mmSocket.getInputStream().read(mmBuffer);
-        //System.out.println(num);
-        //String str1 = new String(mmBuffer);
-        //System.out.println("str1 >> " + str1);
-
     }
 
     // Closes the client socket and causes the thread to finish.
