@@ -28,7 +28,7 @@ public class PillowSocket {
         notifyAll();
     }
 
-    private synchronized byte[] getDataFromSocket(String message) throws java.lang.InterruptedException, IOException{
+    private synchronized byte[] getDataFromSocket(String message) throws java.lang.InterruptedException, IOException {
         while(bluetoothSocket == null ) {
             wait();
         }
@@ -41,8 +41,17 @@ public class PillowSocket {
         return res;
     }
 
-    public boolean sleepingDetected() throws java.lang.InterruptedException, IOException{
+    public boolean sleepingDetected() throws java.lang.InterruptedException, IOException {
         byte[] pillowData = getDataFromSocket("IS_SLEEPING");
         return pillowData[0] != (int) '0';
+    }
+
+    public PillowState getPillowState() throws java.lang.InterruptedException, IOException {
+        byte[] pillowData = getDataFromSocket("HELLO");
+        boolean[] state = new boolean[8];
+        for(int i = 0; i < 8; i++) {
+            state[i] = pillowData[i] != 0;
+        }
+        return new PillowState(state);
     }
 }
