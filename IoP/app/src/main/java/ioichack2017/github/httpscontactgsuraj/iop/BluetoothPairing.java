@@ -98,50 +98,53 @@ public class BluetoothPairing extends AppCompatActivity {
 
     private void pairSuccess() {
         //CHECK IF PILLOW IS CONNECTED
-        if (pillow.getBondState() == pillow.BOND_BONDED) {
-            Log.d("TAG ??",pillow.getName());
-        }
-        try {
-            mSocket = pillow.createInsecureRfcommSocketToServiceRecord(MY_UUID);
-        } catch (IOException e1) {
-            // TODO Auto-generated catch block
-            Log.d("TAG","socket not created");
-            e1.printStackTrace();
-        }
-        try{
-            mSocket.connect();
-        }
-        catch(IOException e){
-            try {
-                mSocket.close();
-                Log.d("TAG","Cannot connect");
-            } catch (IOException e1) {
-                Log.d("TAG","Socket not closed");
-                e1.printStackTrace();
-            }
-        }
+        //if (pillow.getBondState() == pillow.BOND_BONDED) {
+        //    Log.d("TAG ??",pillow.getName());
+        //}
+        //try {
+        //    mSocket = pillow.createRfcommSocketToServiceRecord(MY_UUID);
+        //} catch (IOException e1) {
+        //    // TODO Auto-generated catch block
+        //    Log.d("TAG","socket not created");
+        //    e1.printStackTrace();
+        //}
+        //try{
+        //    mSocket.connect();
+        //}
+        //catch(IOException e){
+        //    try {
+        //        System.out.println("I am coming here !@OEH!O@POBF!");
+        //        mSocket.close();
+        //        Log.d("TAG","Cannot connect");
+        //    } catch (IOException e1) {
+        //        Log.d("TAG","Socket not closed");
+        //        e1.printStackTrace();
+        //    }
+        //}
         //Thread runThread  = new Thread(new Runnable() {
 
         //    @Override
         //    public void run() {
-        //        // Always cancel discovery because it will slow down a connection
-        //        BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
-
-        //        // Make a connection to the BluetoothSocket
-        //        try {
-        //            // This is a blocking call and will only return on a
-        //            // successful connection or an exception
-        //            mSocket.connect();
-        //        } catch (IOException e) {
-        //            //connection to device failed so close the socket
+        //        // Keep listening to the InputStream while connected
+        //        while (true) {
         //            try {
-        //                mSocket.close();
-        //            } catch (IOException e2) {
-        //                e2.printStackTrace();
+        //                //read the data from socket stream
+        //                byte[] mes = {1,2,3};
+        //                byte[] buffer = null;
+        //                mSocket.getOutputStream().write(mes);
+        //                mSocket.getInputStream().read(buffer);
+        //                // Send the obtained bytes to the UI Activity
+        //            } catch (IOException e) {
+        //                //an exception here marks connection loss
+        //                //send message to UI Activity
+        //                break;
         //            }
         //        }
         //  }
         //});
+        //runThread.run();
+        ConnectThread connectThread = new ConnectThread(pillow);
+        connectThread.run();
     }
 
     private void pairFailure() {
