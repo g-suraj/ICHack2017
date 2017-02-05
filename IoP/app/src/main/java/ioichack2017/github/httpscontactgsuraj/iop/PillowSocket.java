@@ -35,7 +35,9 @@ public class PillowSocket {
         byte[] bMessage = message.getBytes();
         bluetoothSocket.getOutputStream().write(bMessage);
         byte[] buff = new byte[1024];
+        System.out.println("Got here!!!");
         int len = bluetoothSocket.getInputStream().read(buff);
+        System.out.println("Got here?????");
         byte[] res = new byte[len];
         System.arraycopy(buff, 0, res, 0, len);
         return res;
@@ -43,6 +45,6 @@ public class PillowSocket {
 
     public boolean sleepingDetected() throws java.lang.InterruptedException, IOException{
         byte[] pillowData = getDataFromSocket("IS_SLEEPING");
-        return pillowData[0] != 0;
+        return pillowData[0] != (int) '0';
     }
 }
